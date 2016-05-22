@@ -14,7 +14,9 @@ app.get('/', function (req, res) {
 
 app.use(bodyParser.json());
 
-
+/*
+ * GET entire match history 
+ */
 app.get('/match', function (req, res) {
 
     api.getMatchHistory().then(function (result) {
@@ -38,9 +40,36 @@ app.get('/match', function (req, res) {
         console.error(err);
         return res.status(400).json(err);
     });
-
-
 });
+
+/*
+ * GET a specific match details
+ */
+app.get('/match/:id', function (req, res) {
+    var matchId = req.params.id;
+    
+    api.getMatchDetails(matchId).then(function (result) {
+        if (result.hasOwnProperty('error')) {
+
+            return res.status(400).json(res);
+
+        } else if (result.length < 1) {
+
+            var err = {
+                error: 'No matches found'
+            };
+
+            return res.status(404).json(err);
+
+        } else {
+            return res.send(result);
+        }
+    }).catch(function (err) {
+        console.error(err);
+        return res.status(404).json(err);
+    });
+});
+
 
 app.listen(PORT, function () {
     console.log('Express listening on port ' + PORT);
