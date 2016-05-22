@@ -1,0 +1,25 @@
+{
+  "name": "dota-api",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "es6-promise": "^3.2.1",
+    "express": "^4.13.4",
+    "install": "^0.8.1",
+    "mongo": "^0.1.0",
+    "mongodb": "^2.1.19",
+    "mongoose": "^4.4.17",
+    "npm": "^3.9.2",
+    "promise": "^7.1.1",
+    "request": "^2.72.0",
+    "sequelize": "^3.23.2",
+    "underscore": "^1.8.3"
+  }
+}
