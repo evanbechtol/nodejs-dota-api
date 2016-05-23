@@ -1,6 +1,6 @@
 var request = require('request');
 var Promise = require('es6-promise').Promise;
-var APIKEY = '25D91D3155115BD34D6B7F2C3E8D468F';
+var APIKEY = '';
 var BASEURL = 'https://api.steampowered.com/IDOTA2Match_570';
 
 module.exports = {
