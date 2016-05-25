@@ -1,15 +1,15 @@
 var request = require('request');
 var Promise = require('es6-promise').Promise;
-var APIKEY = '25D91D3155115BD34D6B7F2C3E8D468F';
-var BASEURL = 'https://api.steampowered.com/IDOTA2Match_570';
 
 var dotaApi = {
-    getMatchHistory: function () {
-        var params = '/GetMatchHistory/V001/?format=JSON&key=' + APIKEY;
+    APIKEY: '25D91D3155115BD34D6B7F2C3E8D468F'
+    , BASEURL: 'https://api.steampowered.com/IDOTA2Match_570'
+    , getMatchHistory: function () {
+        var params = '/GetMatchHistory/V001/?format=JSON&key=' + this.APIKEY;
 
         return new Promise(function (resolve, reject) {
             request({
-                url: BASEURL + params
+                url: this.BASEURL + params
                 , method: 'GET'
             }, function (error, response, body) {
                 if (error) {
@@ -21,11 +21,11 @@ var dotaApi = {
         });
     }
     , getMatchDetails: function (matchId) {
-        var params = '/GetMatchDetails/V001/?match_id=' + matchId + '&key=' + APIKEY;
+        var params = '/GetMatchDetails/V001/?match_id=' + matchId + '&key=' + this.APIKEY;
 
         return new Promise(function (resolve, reject) {
             request({
-                url: BASEURL + params
+                url: this.BASEURL + params
                 , method: 'GET'
             }, function (error, response, body) {
                 if (error) {
@@ -37,17 +37,17 @@ var dotaApi = {
         });
     }
     , getPlayerSummaries: function (steamIds) {
-        var params = '/GetPlayerSummaries/v0002/?key=' + APIKEY + '&steamids=?' + steamIds;
+        var params = '/GetPlayerSummaries/v0002/?key=' + this.APIKEY + '&steamids=?' + steamIds;
 
         return promise(params);
     }
     , getGameItems: function () {
-        var params = '/IEconDOTA2_570/GetGameItems/v0001/?key=' + APIKEY;
+        var params = '/IEconDOTA2_570/GetGameItems/v0001/?key=' + this.APIKEY;
 
         return promise(params);
     }
     , getHeroes: function () {
-        var params = '/IEconDOTA2_570/GetHeroes/v1/?key=' + APIKEY;
+        var params = '/IEconDOTA2_570/GetHeroes/v1/?key=' + this.APIKEY;
 
         return promise(params);
     }
@@ -62,7 +62,7 @@ var dotaApi = {
 function promise(params) {
     return new Promise(function (resolve, reject) {
         request({
-            url: BASEURL + params
+            url: this.BASEURL + params
             , method: 'GET'
         }, function (error, response, body) {
             if (error) {
