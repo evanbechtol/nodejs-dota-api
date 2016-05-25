@@ -1,5 +1,6 @@
 var express = require('express');
 var _ = require('underscore');
+var querystring = require('querystring');
 var db = require('./db.js');
 var dotaApi = require('./api.js');
 var app = express();
@@ -43,11 +44,11 @@ app.get('/match', function (req, res) {
 });
 
 /*
- * GET a specific match details
+ * GET match details
  */
 app.get('/match/:id', function (req, res) {
     var matchId = req.params.id;
-
+    console.log(querystring.stringify(matchId));
     dotaApi.getMatchDetails(matchId).then(function (result) {
         if (result.hasOwnProperty('error')) {
 
