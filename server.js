@@ -35,7 +35,7 @@ app.get('/match', function (req, res) {
         }
 
     }, function (error) {
-        return res.status().send(error);
+        return res.status(404).send(error);
     }).catch(function (err) {
         console.error(err);
         return res.status(403).send(err);
@@ -65,7 +65,8 @@ app.get('/match/:id', function (req, res) {
             return res.send(result);
         }
     }, function (error) {
-        return res.status().send(error);
+        console.error(error);
+        return res.status(404).send(error);
     }).catch(function (err) {
         console.error(err);
         return res.status(403).send(err);
