@@ -5,7 +5,7 @@
     <br/>
     <h3>Current functionality includes:</h3>
     <ul>
-      <li><strong>GetMatchHistory:</strong> Returns the past 25 public matches in JSON format.</li>
+      <li><strong>GetMatchHistory:</strong> Returns the latest 25 public matches in JSON format.</li>
       <li><strong>GetMatchDetails:</strong> Returns the match requested, identified by the <code>match_id</code> provided.</li>
     </ul></p>
     <hr>
