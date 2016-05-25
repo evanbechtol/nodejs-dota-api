@@ -38,13 +38,18 @@ var dotaApi = {
     }
     , getPlayerSummaries: function (steamIds) {
         var params = '/GetPlayerSummaries/v0002/?key=' + APIKEY + '&steamids=?' + steamIds;
-        
-        promise(params);
+
+        return promise(params);
     }
-    , getPlayerSummaries: function (steamIds) {
+    , getGameItems: function () {
         var params = '/IEconDOTA2_570/GetGameItems/v0001/?key=' + APIKEY;
-        
-        promise(params);
+
+        return promise(params);
+    }
+    , getHeroes: function () {
+        var params = '/IEconDOTA2_570/GetHeroes/v1/?key=' + APIKEY;
+
+        return promise(params);
     }
     , convert32to64: function (short_id) {
         return short_id + 76561197960265728;
