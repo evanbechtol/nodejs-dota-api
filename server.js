@@ -35,7 +35,7 @@ app.get('/match', function (req, res) {
         }
 
     }, function (error) {
-        return res.status().send(error.toJSON());
+        return res.status().send(error);
     }).catch(function (err) {
         console.error(err);
         return res.status(403).send(err);
@@ -65,7 +65,7 @@ app.get('/match/:id', function (req, res) {
             return res.send(result);
         }
     }, function (error) {
-        return res.status().send(error.toJSON());
+        return res.status().send(error);
     }).catch(function (err) {
         console.error(err);
         return res.status(403).send(err);
@@ -93,7 +93,7 @@ app.get('/playerSummaries/:steamIds', function (req, res) {
             return res.send(result);
         }
     }, function (error) {
-        return res.status().send(error.toJSON());
+        return res.status().send(error);
     }).catch(function (err) {
         console.error(err);
         return res.status(403).send(err);
