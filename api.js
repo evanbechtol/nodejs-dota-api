@@ -1,5 +1,5 @@
-var request = require('request');
-var Promise = require('es6-promise').Promise;
+var request = require('./request.js');
+
 
 var dotaApi = {
     APIKEY: '25D91D3155115BD34D6B7F2C3E8D468F'
@@ -38,8 +38,8 @@ var dotaApi = {
     }
     , getPlayerSummaries: function (steamIds) {
         var params = '/GetPlayerSummaries/v0002/?key=' + this.APIKEY + '&steamids=?' + steamIds;
-
-        return promise(params);
+        return request(params);
+        //return promise(params);
     }
     , getGameItems: function () {
         var params = '/IEconDOTA2_570/GetGameItems/v0001/?key=' + this.APIKEY;
