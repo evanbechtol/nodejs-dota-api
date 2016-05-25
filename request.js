@@ -3,6 +3,7 @@ var Promise = require('es6-promise').Promise;
 
 module.exports = function (params) {
     var BASEURL = 'https://api.steampowered.com/IDOTA2Match_570';
+    console.info(BASEURL + params);
     return new Promise(function (resolve, reject) {
         request({
             url: BASEURL + params
