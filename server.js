@@ -1,18 +1,16 @@
 var express = require('express');
-var bodyParser = require('body-parser');
-var Promise = require('Promise');
 var _ = require('underscore');
 var db = require('./db.js');
 var dotaApi = require('./api.js');
 var app = express();
 var PORT = process.env.PORT || 3000;
 
-// GET root index.html
+/*
+ * GET root index.html
+ */
 app.get('/', function (req, res) {
     res.send('API Root');
 });
-
-app.use(bodyParser.json());
 
 /*
  * GET entire match history 

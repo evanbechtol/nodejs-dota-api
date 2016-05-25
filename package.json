@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Evan Bechtol",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.1",
@@ -18,8 +18,8 @@
     "mongoose": "^4.4.17",
     "npm": "^3.9.2",
     "promise": "^7.1.1",
+    "querystring": "^0.2.0",
     "request": "^2.72.0",
-    "sequelize": "^3.23.2",
     "underscore": "^1.8.3"
   }
 }

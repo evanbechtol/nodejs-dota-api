@@ -1,11 +1,13 @@
 var request = require('request');
 var Promise = require('es6-promise').Promise;
 
-var req = function (params) {
+module.exports = function (params) {
+    var BASEURL: 'https://api.steampowered.com/IDOTA2Match_570';
     return new Promise(function (resolve, reject) {
         request({
-            url: dotaApi.BASEURL + params
+            url: BASEURL + params
             , method: 'GET'
+            , json: true
         }, function (error, response, body) {
             if (error) {
                 reject(error);
@@ -17,6 +19,4 @@ var req = function (params) {
             }
         });
     });
-}
-
-module.exports = req;
+};
