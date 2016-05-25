@@ -3,7 +3,7 @@ var Promise = require('es6-promise').Promise;
 var APIKEY = '25D91D3155115BD34D6B7F2C3E8D468F';
 var BASEURL = 'https://api.steampowered.com/IDOTA2Match_570';
 
-module.exports = {
+var dotaApi = {
     getMatchHistory: function () {
         var params = '/GetMatchHistory/V001/?format=JSON&key=' + APIKEY;
 
@@ -36,4 +36,37 @@ module.exports = {
             });
         });
     }
+    , getPlayerSummaries: function (steamIds) {
+        var params = '/GetPlayerSummaries/v0002/?key=' + APIKEY + '&steamids=?' + steamIds;
+        
+        promise(params);
+    }
+    , getPlayerSummaries: function (steamIds) {
+        var params = '/IEconDOTA2_570/GetGameItems/v0001/?key=' + APIKEY;
+        
+        promise(params);
+    }
+    , convert32to64: function (short_id) {
+        return short_id + 76561197960265728;
+    }
+    , convert64to32: function (long_id) {
+        return long_id + 76561197960265728;
+    }
 };
+
+function promise(params) {
+    return new Promise(function (resolve, reject) {
+        request({
+            url: BASEURL + params
+            , method: 'GET'
+        }, function (error, response, body) {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(body);
+            }
+        });
+    });
+}
+
+module.exports = dotaApi;
