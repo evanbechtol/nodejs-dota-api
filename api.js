@@ -62,7 +62,7 @@ var dotaApi = {
 function promise(params) {
     return new Promise(function (resolve, reject) {
         request({
-            url: this.BASEURL + params
+            url: dotaApi.BASEURL + params
             , method: 'GET'
         }, function (error, response, body) {
             if (error) {
