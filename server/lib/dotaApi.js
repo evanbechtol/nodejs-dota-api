@@ -9,22 +9,22 @@ var dotaApi = {
     }
     
     , getMatchDetails: function (params) {
-        var method = '/IDOTA2Match_570/GetMatchDetails/v1/?key=' + this.APIKEY +  '&' + querystring.stringify(params);
+        var method = '/IDOTA2Match_570/GetMatchDetails/v1/?key=' + this.APIKEY + '&' + querystring.stringify(params);
         return request(method);
     }
    
     , getPlayerSummaries: function (params) {
-        var method = '/ISteamUser/GetPlayerSummaries/v2/?key=' + this.APIKEY +  '&' + querystring.stringify(params);
+        var method = '/ISteamUser/GetPlayerSummaries/v2/?key=' + this.APIKEY + '&' + querystring.stringify(params);
         return request(method);
     }
     
     , getGameItems: function (params) {
-        var method = '/IEconDOTA2_570/GetGameItems/v1/?key=' + this.APIKEY +  '&' + querystring.stringify(params);
+        var method = '/IEconDOTA2_570/GetGameItems/v1/?key=' + this.APIKEY + '&' + querystring.stringify(params);
         return request(method);
     }
     
     , getHeroes: function (params) {
-        var method = '/IEconDOTA2_570/GetHeroes/v1/?key=' + this.APIKEY +  '&' + querystring.stringify(params);
+        var method = '/IEconDOTA2_570/GetHeroes/v1/?key=' + this.APIKEY + '&' + querystring.stringify(params);
         return request(method);
     }
     

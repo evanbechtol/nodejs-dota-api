@@ -2,7 +2,7 @@ var express = require('express');
 var _ = require('underscore');
 var querystring = require('querystring');
 //var db = require('./db.js');
-var dotaApi = require('./dotaApi.js');
+var dotaApi = require('./lib/dotaApi.js');
 var app = express();
 var PORT = process.env.PORT || 3000;
 
@@ -18,6 +18,7 @@ app.get('/match', function (req, res) {
     dotaApi.getMatchHistory(options).then(function (result) {
         return validateResults(result, res);
     }, function (error) {
+        console.error(error);
         return res.status(503).send(error);
     });
 });
@@ -39,6 +40,7 @@ app.get('/playerSummaries', function (req, res) {
     dotaApi.getPlayerSummaries(options).then(function (result) {
         return validateResults(result, res);
     }, function (error) {
+        console.error(error);
         return res.status(503).send(error);
     });
 });
@@ -48,6 +50,7 @@ app.get('/getHeroes', function (req, res) {
     dotaApi.getHeroes().then(function (result) {
         return validateResults(result, res);
     }, function (error) {
+        console.error(error);
         return res.status(503).send(error);
     });
 });
@@ -56,6 +59,7 @@ app.get('/getGameItems', function (req, res) {
     dotaApi.getGameItems().then(function (result) {
         return validateResults(result, res);
     }, function (error) {
+        console.error(error);
         return res.status(503).send(error);
     });
 });
@@ -64,9 +68,8 @@ app.get('/getRarities', function (req, res) {
     dotaApi.getRarities().then(function (result) {
         return validateResults(result, res);
     }, function (error) {
+        console.error(error);
         return res.status(503).send(error);
-    }, function (dat) {
-        console.log(dat);
     });
 });
 
@@ -75,9 +78,8 @@ app.get('/getSchemaUrl', function (req, res) {
     dotaApi.getSchemaUrl().then(function (result) {
         return validateResults(result, res);
     }, function (error) {
+        console.error(error);
         return res.status(503).send(error);
-    }, function (dat) {
-        console.log(dat);
     });
 });
 
@@ -88,7 +90,7 @@ function validateResults(result, res) {
         var err = {
             error: 'No results found'
         };
-        return res.status(503).send(err);
+        return res.status().send(err);
     } else {
         return res.send(result);
     }
