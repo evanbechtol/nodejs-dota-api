@@ -1,7 +1,7 @@
 var express = require('express');
 var _ = require('underscore');
 var querystring = require('querystring');
-var db = require('./db.js');
+//var db = require('./db.js');
 var dotaApi = require('./api.js');
 var app = express();
 var PORT = process.env.PORT || 3000;
