@@ -4,7 +4,7 @@ var querystring = require('querystring');
 var dotaApi = {
     APIKEY: ''
     , getMatchHistory: function (params) {
-        var method '/IDOTA2Match_570/GetMatchHistory/v1/?key=' + this.APIKEY + '&' + querystring.stringify(params);
+        var method = '/IDOTA2Match_570/GetMatchHistory/v1/?key=' + this.APIKEY + '&' + querystring.stringify(params);
         return request(method);
     }
     
