@@ -7,10 +7,6 @@
     <ul>
       <li><strong>GetMatchHistory:</strong> Returns the latest 25 public matches in JSON format.</li>
       <li><strong>GetMatchDetails:</strong> Returns the match requested, identified by the <code>match_id</code> provided.</li>
-    </ul></p>
-    <hr>
-     <h3>Functionality in development:</h3>
-    <ul>
       <li><strong>GetPlayerSummaries:</strong> Returns a summary of a player using the Steam API call. This is used to retrieve the <code>account_id</code>, which is mapped to a specific player and identifies each player in DOTA2 matches.
         <ul>
           <li><strong>convert32to64:</strong> Converts the player <code>account_id</code> to their corresponding <code>steam_id</code> to lookup their Profile and retrieve their player name, or other related information.</li>
@@ -19,6 +15,11 @@
         
       <li><strong>GetGameItems:</strong> Retrieves the list of game items and their associated ID's. This can then be mapped to the item names for displaying their information.</li>
       <li><strong>GetHeroes:</strong> Retrieves the list of heroes and their associated ID's. This can then be mapped to the hero names for displaying their information.</li>
+    </ul></p>
+    <hr>
+     <h3>Functionality in development:</h3>
+    <ul>
+     
     </ul></p>
   </div>
 </div>

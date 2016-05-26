@@ -6,53 +6,47 @@ var dotaApi = require('./api.js');
 var app = express();
 var PORT = process.env.PORT || 3000;
 
-/*
- * GET root index.html
- */
+dotaApi.APIKEY = '25D91D3155115BD34D6B7F2C3E8D468F';
+
 app.get('/', function (req, res) {
     res.send('API Root');
 });
 
-/*
- * GET entire match history 
- */
 app.get('/match', function (req, res) {
+    var options = _.isNull(req.query) ? req.query : null;
 
-    dotaApi.getMatchHistory().then(function (result) {
+    dotaApi.getMatchHistory(options).then(function (result) {
         if (result.hasOwnProperty('error')) {
 
             return res.status(400).json(res);
 
-        } else if (result.length < 1) {
+        } else if (_.isNull(result)) {
 
             var err = {
                 error: 'No matches found'
             };
 
-            return res.status(404).json(err);
+            return res.status(404).send(err);
 
         } else {
             return res.send(result);
         }
 
     }, function (error) {
-        return res.status(404).send(error);
+        return res.status(503).send(error);
     }).catch(function (err) {
         console.error(err);
-        return res.status(403).send(err);
+        return res.status(403).send('Error while retrieving match history: ' + err);
     });
 });
 
-/*
- * GET match details
- */
-app.get('/match/:id', function (req, res) {
-    var matchId = req.params.id;
-    console.log(querystring.stringify(matchId));
-    dotaApi.getMatchDetails(matchId).then(function (result) {
+app.get('/matchDetails', function (req, res) {
+    var options = req.query;
+
+    dotaApi.getMatchDetails(options).then(function (result) {
         if (result.hasOwnProperty('error')) {
 
-            return res.status(400).json(res);
+            return res.status(400).send(res);
 
         } else if (result.length < 1) {
 
@@ -60,7 +54,7 @@ app.get('/match/:id', function (req, res) {
                 error: 'No matches found'
             };
 
-            return res.status(404).json(err);
+            return res.status(404).send(err);
 
         } else {
             return res.send(result);
@@ -74,13 +68,10 @@ app.get('/match/:id', function (req, res) {
     });
 });
 
-/*
- * GET player summaries
- */
-app.get('/playerSummaries/:steamIds', function (req, res) {
-    var steamIds = req.params.id;
+app.get('/playerSummaries', function (req, res) {
+    var options = req.query;
 
-    dotaApi.getPlayerSummaries(steamIds).then(function (result) {
+    dotaApi.getPlayerSummaries(options).then(function (result) {
         if (result.hasOwnProperty('error')) {
 
         } else if (result.length < 1) {
@@ -89,13 +80,13 @@ app.get('/playerSummaries/:steamIds', function (req, res) {
                 error: 'No matches found'
             };
 
-            return res.status(404).json(err);
+            return res.status(404).send(err);
 
         } else {
             return res.send(result);
         }
     }, function (error) {
-        return res.status().send(error);
+        return res.status(503).send(error);
     }).catch(function (err) {
         console.error(err);
         return res.status(403).send(err);
@@ -117,6 +108,8 @@ app.get('/getHeroes', function (req, res) {
         } else {
             return res.send(result);
         }
+    }, function (error) {
+        return res.status(503).send(error);
     }).catch(function (err) {
         console.error(err);
         return res.status(403).send(err);
@@ -133,10 +126,12 @@ app.get('/getGameItems', function (req, res) {
                 error: 'No matches found'
             };
 
-            return res.status(404).json(err);
+            return res.status(404).send(err);
         } else {
             return res.send(result);
         }
+    }, function (error) {
+        return res.status(503).send(error);
     }).catch(function (err) {
         console.error(err);
         return res.status(403).send(err);
