@@ -2,7 +2,7 @@ var express = require('express');
 var _ = require('underscore');
 var querystring = require('querystring');
 //var db = require('./db.js');
-var dotaApi = require('./api.js');
+var dotaApi = require('./dotaApi.js');
 var app = express();
 var PORT = process.env.PORT || 3000;
 
@@ -30,9 +30,6 @@ app.get('/matchDetails', function (req, res) {
     }, function (error) {
         console.error(error);
         return res.status().send(error);
-    }).catch(function (err) {
-        console.error(err);
-        return res.status(503).send(err);
     });
 });
 
