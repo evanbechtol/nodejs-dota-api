@@ -15,11 +15,16 @@
         
       <li><strong>GetGameItems:</strong> Retrieves the list of game items and their associated ID's. This can then be mapped to the item names for displaying their information.</li>
       <li><strong>GetHeroes:</strong> Retrieves the list of heroes and their associated ID's. This can then be mapped to the hero names for displaying their information.</li>
-    </ul></p>
+    </ul>
     <hr>
      <h3>Functionality in development:</h3>
-    <ul>
-     
-    </ul></p>
+        <ul>
+            <li><strong>GetLeagueListing</strong></li>
+            <li><strong>GetLiveLeagueGames</strong></li>
+            <li><strong>GetTeamInfoByID</strong></li>
+            <li><strong>Hero Images</strong></li>
+            <li><strong>Item Images</strong></li>
+            <li><strong>GetMatchHistoryBySequenceNum</strong></li>
+        </ul></p>
   </div>
 </div>
