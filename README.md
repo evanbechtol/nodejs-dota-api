@@ -3,6 +3,8 @@
   <div class="col-xs-12">
     <p class="col-xs-12">A wrapper for the DOTA2 API, provided by Valve. Consider this to be in alpha stage, but I am actively working on enhancing the capabilities and clarity of implementation. Ultimately, this will be an entire implementation, and will include the ability to easily integrate a Mongo database, as well as a front-end Using <code>angular.js</code>.
     <br/>
+    <ul><li>For a live demonstration, please <a href="https://nodejs-dota-api.herokuapp.com">look at my heroku deployment. For a list of commands, loko at the wiki page on this repository.</a></li></ul>
+    <br/>
     <h3>Current functionality includes:</h3>
     <ul>
       <li><strong>GetMatchHistory:</strong> Returns the latest 25 public matches in JSON format.</li>
