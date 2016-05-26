@@ -32,7 +32,7 @@ app.get('/matchDetails', function (req, res) {
         return res.status().send(error);
     }).catch(function (err) {
         console.error(err);
-        return res.status(403).send(err);
+        return res.status(503).send(err);
     });
 });
 
@@ -91,7 +91,7 @@ function validateResults(result, res) {
         var err = {
             error: 'No results found'
         };
-        return res.status(404).send(err);
+        return res.status(503).send(err);
     } else {
         return res.send(result);
     }
