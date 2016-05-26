@@ -28,6 +28,16 @@ var dotaApi = {
         return request(method);
     }
     
+    , getRarities: function (params) {
+        var method = '/IEconDOTA2_570/GetRarities/v1/?key=' + this.APIKEY + '&' + querystring.stringify(params);
+        return request(method);
+    }
+    
+    , getSchemaUrl: function (params) {
+        var method = '/IEconItems_570/GetSchemaURL/v1?key=' + this.APIKEY + '&' + querystring.stringify(params);
+        return request(method);
+    }
+
     , convert32to64: function (short_id) {
         return short_id + 76561197960265728;
     }

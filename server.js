@@ -18,7 +18,7 @@ app.get('/match', function (req, res) {
     dotaApi.getMatchHistory(options).then(function (result) {
         if (result.hasOwnProperty('error')) {
 
-            return res.status(400).json(res);
+            return res.status(403).json(res);
 
         } else if (_.isNull(result)) {
 
@@ -34,9 +34,6 @@ app.get('/match', function (req, res) {
 
     }, function (error) {
         return res.status(503).send(error);
-    }).catch(function (err) {
-        console.error(err);
-        return res.status(403).send('Error while retrieving match history: ' + err);
     });
 });
 
@@ -46,7 +43,7 @@ app.get('/matchDetails', function (req, res) {
     dotaApi.getMatchDetails(options).then(function (result) {
         if (result.hasOwnProperty('error')) {
 
-            return res.status(400).send(res);
+            return res.status(403).send(res);
 
         } else if (result.length < 1) {
 
@@ -61,7 +58,7 @@ app.get('/matchDetails', function (req, res) {
         }
     }, function (error) {
         console.error(error);
-        return res.status(404).send(error);
+        return res.status().send(error);
     }).catch(function (err) {
         console.error(err);
         return res.status(403).send(err);
@@ -77,7 +74,7 @@ app.get('/playerSummaries', function (req, res) {
         } else if (result.length < 1) {
 
             var err = {
-                error: 'No matches found'
+                error: 'Player summaries not found'
             };
 
             return res.status(404).send(err);
@@ -87,9 +84,6 @@ app.get('/playerSummaries', function (req, res) {
         }
     }, function (error) {
         return res.status(503).send(error);
-    }).catch(function (err) {
-        console.error(err);
-        return res.status(403).send(err);
     });
 });
 
@@ -97,11 +91,13 @@ app.get('/playerSummaries', function (req, res) {
 app.get('/getHeroes', function (req, res) {
     dotaApi.getHeroes().then(function (result) {
         if (result.hasOwnProperty('error')) {
-
+            
+            return res.status(403).send(result.error);
+            
         } else if (result.length < 1) {
 
             var err = {
-                error: 'No matches found'
+                error: 'Heroes not found'
             };
 
             return res.status(404).json(err);
@@ -110,20 +106,19 @@ app.get('/getHeroes', function (req, res) {
         }
     }, function (error) {
         return res.status(503).send(error);
-    }).catch(function (err) {
-        console.error(err);
-        return res.status(403).send(err);
     });
 });
 
 app.get('/getGameItems', function (req, res) {
     dotaApi.getGameItems().then(function (result) {
         if (result.hasOwnProperty('error')) {
-
+            
+            return res.status(403).send(result.error);
+            
         } else if (result.length < 1) {
 
             var err = {
-                error: 'No matches found'
+                error: 'Game items not found'
             };
 
             return res.status(404).send(err);
@@ -132,9 +127,53 @@ app.get('/getGameItems', function (req, res) {
         }
     }, function (error) {
         return res.status(503).send(error);
-    }).catch(function (err) {
-        console.error(err);
-        return res.status(403).send(err);
+    });
+});
+
+app.get('/getRarities', function (req, res) {
+    dotaApi.getRarities().then(function (result) {
+        if (result.hasOwnProperty('error')) {
+            
+            return res.status(403).send(result.error);
+            
+        } else if (result.length < 1) {
+            
+            var err = {
+                error: 'Rarities not found'
+            };
+
+            return res.status(404).send(err);
+        } else {
+            return res.send(result);
+        }
+    }, function (error) {
+        return res.status(503).send(error);
+    }, function (dat) {
+        console.log(dat);
+    });
+});
+
+
+app.get('/getSchemaUrl', function (req, res) {
+    dotaApi.getSchemaUrl().then(function (result) {
+        if (result.hasOwnProperty('error')) {
+            
+            return res.status(403).send(result.error);
+            
+        } else if (result.length < 1) {
+            
+            var err = {
+                error: 'SchemaUrl not found'
+            };
+
+            return res.status(404).send(err);
+        } else {
+            return res.send(result);
+        }
+    }, function (error) {
+        return res.status(503).send(error);
+    }, function (dat) {
+        console.log(dat);
     });
 });
 
