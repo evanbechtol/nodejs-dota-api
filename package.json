@@ -1,0 +1,30 @@
+{
+  "name": "dota-api",
+  "version": "0.0.5",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Parasin/nodejs-dota-api"
+  },
+  "author": "Evan Bechtol",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "es6-promise": "^3.2.1",
+    "express": "^4.13.4",
+    "install": "^0.8.1",
+    "mongo": "^0.1.0",
+    "mongodb": "^2.1.19",
+    "mongoose": "^4.4.17",
+    "npm": "^3.9.2",
+    "promise": "^7.1.1",
+    "pug": "^0.1.0",
+    "querystring": "^0.2.0",
+    "request": "^2.72.0",
+    "underscore": "^1.8.3"
+  }
+}

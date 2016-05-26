@@ -2,14 +2,17 @@ var express = require('express');
 var _ = require('underscore');
 var querystring = require('querystring');
 //var db = require('./db.js');
-var dotaApi = require('./lib/dotaApi.js');
+var dotaApi = require('./server/lib/dotaApi.js');
 var app = express();
+var path = require('path');
 var PORT = process.env.PORT || 3000;
 
 dotaApi.APIKEY = '25D91D3155115BD34D6B7F2C3E8D468F';
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.get('/', function (req, res) {
-    res.send('API Root');
+    res.sendFile('index.html', {root: __dirname});
 });
 
 app.get('/match', function (req, res) {
