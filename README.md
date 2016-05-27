@@ -3,7 +3,10 @@
   <div class="col-xs-12">
     <p class="col-xs-12">A wrapper for the DOTA2 API, provided by Valve. Consider this to be in alpha stage, but I am actively working on enhancing the capabilities and clarity of implementation. Ultimately, this will be an entire implementation, and will include the ability to easily integrate a Mongo database, as well as a front-end Using <code>angular.js</code>.
     <br/>
-    <ul><li>For a live demonstration, please <a href="https://nodejs-dota-api.herokuapp.com">look at my heroku deployment.</a> For a list of commands, look at the wiki page on this repository.</li></ul>
+    <ul>
+        <li>For a live demonstration, please <a href="https://nodejs-dota-api.herokuapp.com">look at my heroku deployment.</a> For a list of commands, look at the wiki page on this repository.</li>
+        <li>**Please note that the file server.js is NOT required to use the api! That file is only used to test out the calls from the DOTA2 API. The only files that are required to use the API are <code>request.js</code> and <code>dotaApi.js</code></li>
+    </ul>
     <br/>
     <h3>Current functionality includes:</h3>
     <ul>
