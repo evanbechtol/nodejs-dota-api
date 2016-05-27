@@ -4,8 +4,7 @@ dotaApp.service('matchService', function() {
 
 dotaApp.service('matchDetailsService', ['$resource', function($resource) {
     this.getMatch = function(matchId) {
-        var dotaAPI = $resource("http://localhost:3000/matchDetails/", 
-                        { callback: "JSON_CALLBACK" }, {get: {method: "JSONP" }});
+        var dotaAPI = $resource("http://localhost:3000/matchDetails/?");
     
        return dotaAPI.get({ match_id: matchId}); 
     }
