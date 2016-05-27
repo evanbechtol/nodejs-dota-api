@@ -1,0 +1,15 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{ convertToDate({dt: w.dt}) | date: dateFormat}}</h3>
+    </div>
+    <div class="panel-body">
+        <div class="well">
+            Daytime temperature: {{ convertToFahrenheit({dayTemp: w.temp.day}) }}<br/>
+            Nighttime temperature: {{convertToFahrenheit({dayTemp: w.temp.eve}) }}<br/>
+        </div>
+        <div class="well">
+            Max temperature: {{ convertToFahrenheit({dayTemp: w.temp.max}) }}<br/>
+            Min temperature: {{convertToFahrenheit({dayTemp: w.temp.min}) }}<br/>
+        </div>
+    </div>
+</div>

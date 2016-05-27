@@ -1,0 +1,14 @@
+<div class="matchDetails" style="padding-top: 5em">
+    <h2 class="lead">Details for match {{ matchId }}</h2>
+    <small><a href="#/">Back to Search</a></small>
+    <hr />
+    Matches Displayed: <a class="days" href="#/forecast/2" ng-class="{'bg-primary': days === '2'}">2</a> | <a class="days" href="#/forecast/5" ng-class="{ 'bg-primary': days === '5'}">5</a> | <a class="days" href="#/forecast/7" ng-class="{ 'bg-primary': days === '7'}">7</a>
+    <hr />
+    <div ng-repeat="w in weatherResult.list">
+        <div class="row">
+            <div class="container-fluid" style="margin-right: 1.5%">
+                <weather-panel convert-to-date="convertToDate(dt)" convert-to-fahrenheit="convertToFahrenheit(dayTemp)" date-format="MMM dd, y" w="w"></weather-panel>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,1 @@
-var app = angular.module('dotaApi', ['ngRoute', 'ngResource', 'ngAnimate']);
+var dotaApp = angular.module('dotaApi', ['ngRoute', 'ngResource', 'ngAnimate']);
