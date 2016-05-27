@@ -45,10 +45,11 @@
         <script src="/js/services.js"></script>
         <script src="/js/directives.js"></script>
         <script src="/js/controllers.js"></script>
+        <script src="/js/mainController.js"></script>
     </head>
     
     <body data-spy="scroll" data-target=".navbar" data-offset="60">
-        <header>
+        <header style="padding-bottom: 3.6em">
             <!-- START Navbar -->
             <nav class="navbar navbar-inverse navbar-fixed-top">
               <div class="container-fluid">
@@ -62,19 +63,20 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                   <ul class="nav navbar-nav">
-                    <li class="active"><a href="#/">Home</a></li>
-                    <li><a href="#/items">Items</a></li>
-                    <li><a href="#/match">Matches</a></li> 
+                    <li class="active"><a href="#/" data-target="#">Home</a></li>
+                    <li><a href="#/items" data-target="/items">Items</a></li>
+                    <li><a href="#/match" data-target="/match">Matches</a></li> 
                   </ul>
                 </div>
               </div>
             </nav>
             <!-- END navbar -->
         </header>
+        <div class="container-fluid" style="padding: 0;" ng-controller="mainController">
+            <p class="col-xs-12 jumbotron" style="border-radius: 0; text-align: center">{{ message }}</p>
+        </div>
         <div>
-            <div class="containter-fluid" ng-view>
-                <h1>Home</h1>
-            </div>
+            <div class="containter-fluid" ng-view></div>
         </div>
         
     </body>

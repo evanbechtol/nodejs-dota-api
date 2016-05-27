@@ -2,7 +2,7 @@ dotaApp.controller('homeController', ['$scope', '$resource', '$location', 'match
     $scope.city = matchService.city;
     
     $scope.$watch('city', function() {
-        cityService.city = $scope.city;
+        matchService.city = $scope.city;
     });
     
     $scope.submit = function() {
@@ -13,7 +13,7 @@ dotaApp.controller('homeController', ['$scope', '$resource', '$location', 'match
 dotaApp.controller('forecastController', ['$scope', '$routeParams', 'matchDetailsService', 'matchService', function($scope, $routeParams, matchDetailsService, matchService) {
     $scope.matchId = matchService.matchId;
     $scope.days = $routeParams.days || '2';
-    $scope.weatherResult = matchDetailsService.getWeather($scope.city, $scope.days);
+    $scope.weatherResult = matchDetailsService.getMatch($scope.matchId);
     $scope.convertToFahrenheit = function(degK) {
         return Math.round((1.8 * (degK - 273)) + 32);
     }
