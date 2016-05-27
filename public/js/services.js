@@ -4,7 +4,7 @@ dotaApp.service('matchService', function() {
 
 dotaApp.service('matchDetailsService', ['$resource', function($resource) {
     this.getMatch = function(matchId) {
-        var dotaAPI = $resource("http://localhost:3000/matchDetails/?");
+        var dotaAPI = $resource("http://nodejs-dota-api.herokuapp.com/matchDetails/?");
     
        return dotaAPI.get({ match_id: matchId}); 
     }
