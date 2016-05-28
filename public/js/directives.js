@@ -1,4 +1,4 @@
-dotaApp.directive('weatherPanel', function() {
+dotaApp.directive('matchPanel', function() {
    return {
        replace: true,
        templateUrl: 'html/matchPanel.html',

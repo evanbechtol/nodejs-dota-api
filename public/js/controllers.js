@@ -10,15 +10,10 @@ dotaApp.controller('homeController', ['$scope', '$resource', '$location', 'match
     };
 }]);
 
-dotaApp.controller('forecastController', ['$scope', '$routeParams', 'matchDetailsService', 'matchService', function($scope, $routeParams, matchDetailsService, matchService) {
+dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsService', 'matchService', function($scope, $routeParams, matchDetailsService, matchService) {
     $scope.matchId = matchService.matchId;
     $scope.days = $routeParams.days || '2';
-    $scope.weatherResult = matchDetailsService.getMatch($scope.matchId);
-    $scope.convertToFahrenheit = function(degK) {
-        return Math.round((1.8 * (degK - 273)) + 32);
-    }
+    $scope.matchResult = ' ';
+    $scope.matchResult = matchDetailsService.getMatch($scope.matchId);
     
-    $scope.convertToDate = function(dt) {
-        return new Date(dt * 1000);
-    }
 }]);

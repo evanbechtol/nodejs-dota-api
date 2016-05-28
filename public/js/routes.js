@@ -2,11 +2,11 @@ dotaApp.config(['$routeProvider', function($routeProvider) {
     $routeProvider
     .when('/', {
         templateUrl: 'html/home.html',
-        controller: 'homeController'
+        controller: 'matchController'
     })
     .when('/items', {
         templateUrl: 'html/items.html',
-        controller: 'forecastController'
+        controller: 'matchController'
     })
     .when('/match/', {
         templateUrl: 'html/matchDetails.html',
