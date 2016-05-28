@@ -15,6 +15,6 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
     $scope.days = $routeParams.days || '2';
     $scope.matchResult = ' ';
     $scope.matchResult = matchDetailsService.getMatch($scope.matchId);
-    $scope.playerId = $scope.matchResult.result.players;
+    $scope.playerId = $scope.matchResult.result;
     console.log($scope.playerId);
 }]);
