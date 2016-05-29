@@ -6,6 +6,10 @@ dotaApp.service('matchDetailsService', ['$resource', function($resource) {
     this.getMatch = function(matchId) {
         var dotaAPI = $resource("https://nodejs-dota-api.herokuapp.com/matchDetails/?");
     
-        return dotaAPI.get({ match_id: matchId}); 
+        return dotaAPI.get({ match_id: matchId}).then(function(match) {
+            return match;
+        }, function(err) {
+            return err;
+        }); 
     }
 }]);
