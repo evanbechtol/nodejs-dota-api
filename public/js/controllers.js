@@ -17,10 +17,11 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
     matchDetailsService.getMatch($scope.matchId).$promise.then(function(match) {
     	//$scope.matchResult = _.pick(match, 'players');
         $scope.matchResult = match;
+        console.log($scope.matchResult);
+        console.log(JSON.stringify(_.pick($scope.matchResult, 'players')));
     }, function(err) {
         console.error(err);
-    });
+	});
    // $scope.matchResult = $scope.matchResult[1];
-    //console.log(JSON.stringify(_.pick($scope.matchResult, 'players')));
-    console.log($scope.matchResult);
+    
 }]);
