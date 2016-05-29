@@ -16,5 +16,5 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
     $scope.matchResult = ' ';
     $scope.matchResult = matchDetailsService.getMatch($scope.matchId);
     $scope.matchResult = $scope.matchResult[0];
-    console.log($scope.matchResult.length);
+    console.log($scope.matchResult);
 }]);
