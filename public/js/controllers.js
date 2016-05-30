@@ -1,29 +1,35 @@
-dotaApp.controller('homeController', ['$scope', '$resource', '$location', 'matchService', function($scope, $resource, $location, matchService) {
+dotaApp.controller('homeController', ['$scope', '$resource', '$location', 'matchService', function ($scope, $resource, $location, matchService) {
     $scope.city = matchService.city;
-    
-    $scope.$watch('city', function() {
+
+    $scope.$watch('city', function () {
         matchService.city = $scope.city;
     });
-    
-    $scope.submit = function() {
+
+    $scope.submit = function () {
         $location.path('/forecast');
     };
 }]);
 
-dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsService', 'matchService', function($scope, $routeParams, matchDetailsService, matchService) {
+dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsService', 'matchService', function ($scope, $routeParams, matchDetailsService, matchService) {
     $scope.matchId = matchService.matchId;
-    $scope.days = $routeParams.days || '2';
-    $scope.matchResult = ' ';
-    matchDetailsService.getMatch($scope.matchId).$promise.then(function(match) {
-    	//$scope.matchResult = _.pick(match, 'players');
-        $scope.matchResult = match;
-        console.log($scope.matchResult);
-        $scope.matchResult = _.pick($scope.matchResult, 'result');
-        $scope.players = $scope.matchResult.result.players;
+    matchDetailsService.getMatch($scope.matchId).$promise.then(function (match) {
+        $scope.match = _.pick(match, 'result');
+        $scope.match = $scope.match.result;
+        $scope.players = $scope.match.result.players;
         console.log(JSON.stringify($scope.players));
-    }, function(err) {
+    }, function (err) {
         console.error(err);
-	});
-   // $scope.matchResult = $scope.matchResult[1];
+    });
     
+    $scope.convert32to64 = function (id) {
+    	return dotaApi.convert32to64(id);   
+    };
+    $scope.convert64to32 = function(id) {
+        return dotaApi.convert64to32(id);
+    };
+    $scope.getPlayerName = function(id) {
+        
+    }
+    // $scope.matchResult = $scope.matchResult[1];
+
 }]);
