@@ -27,7 +27,7 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
     
     var getPlayerSummary  = function(id) {
         matchDetailsService.getPlayerSummaries($scope.convert32to64(id)).$promise.then(function (summary) {
-            
+            console.log(summary);
             if (_.has(summary.response, 'players')) {
                 var player = {personaname: summary.personaname, avatar: summary.avatar};
                 return player;
