@@ -45,7 +45,7 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
             console.log('Error encountered');
             return err;
         });
-        console.log(JSON.stringify(player));
+        console.log('here: ' + JSON.stringify(player));
         return player;
     }
     
