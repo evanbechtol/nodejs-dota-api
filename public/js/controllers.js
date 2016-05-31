@@ -26,16 +26,17 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
     });
     
     var getPlayerSummary  = function(id) {
-        matchDetailsService.getPlayerSummaries($scope.convert32to64(id)).$promise.then(function (summary) {
-            console.log('Summary: ' + JSON.stringify(summary));
-            var summary = _.pick(summary, 'response');
-            
+        matchDetailsService.getPlayerSummaries($scope.convert32to64(id)).$promise.then(function (response) {
+            console.log('Summary: ' + JSON.stringify(response));
+            var summary = _.pick(response, 'response');
+            console.log(JSON.stringify(summary));
             if (_.has(summary, 'players')) {
                 console.log('We found player');
                 console.log('Player: ' + JSON.stringify(summary[0]));
                 var player = {personaname: summary[0].personaname, avatar: summary[0].avatar};
                 return player;
             } else {
+                console.error('Player not found');
                 return {error: 'Player could not be found'};
             }
         }, function (err) {
