@@ -33,7 +33,7 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
             console.log(JSON.stringify(summary));
             if (_.has(summary, 'players')) {
                 console.log('We found player');
-                console.log('Player: ' + JSON.stringify(summary[0]));
+                console.log('Player: ' + JSON.stringify(summary.players[0]));
                 var player = {personaname: summary.players[0].personaname, avatar: summary.players[0].avatar};
                 return player;
             } else {
