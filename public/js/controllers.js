@@ -32,9 +32,10 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
            // console.log(JSON.stringify(summary));
             if (_.has(summary, 'players')) {
                // console.log('We found player');
-                console.log('Player: ' + JSON.stringify(summary.players[0].personaname));
                 
-                return {personaname: summary.players[0].personaname, avatar: summary.players[0].avatar};
+                var player = {personaname: summary.players[0].personaname, avatar: summary.players[0].avatar};
+                console.log('Player: ' + JSON.stringify(player));
+                return player;
             } else {
                 console.error('Player not found');
                 return {error: 'Player could not be found'};
