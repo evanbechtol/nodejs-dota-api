@@ -39,6 +39,7 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
                 return {error: 'Player could not be found'};
             }
         }, function (err) {
+            console.log('Error encountered');
             return err;
         });
     }
