@@ -37,11 +37,11 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
         });
     }
     
-    $scope.convert32to64: function (short_id) {
+    $scope.convert32to64 = function (short_id) {
         return short_id + 76561197960265728;
     };
     
-    $scope.convert64to32: function (long_id) {
+    $scope.convert64to32 = function (long_id) {
         return long_id + 76561197960265728;
     };
     // $scope.matchResult = $scope.matchResult[1];
