@@ -16,6 +16,8 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
         $scope.match = _.pick(match, 'result');
         $scope.match = $scope.match.result;
         $scope.players = $scope.match.players;
+        $scope.player = getPlayerSummary(players[0].account_id).personaname;
+        console.log($scope.player);
         console.log(JSON.stringify($scope.players));
     }, function (err) {
         console.error(err);
@@ -42,8 +44,7 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
         });
     }
     
-    $scope.player = getPlayerSummary(players[0].account_id).personaname;
-        console.log($scope.player);
+    
     // $scope.matchResult = $scope.matchResult[1];
 
 }]);
