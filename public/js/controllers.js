@@ -27,11 +27,12 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
     $scope.convert64to32 = function(id) {
         return dotaApi.convert64to32(id);
     };
-    $scope.getPlayerSummary = function(id) {
+    
+    var getPlayerSummary  = function(id) {
         dotaApi.getPlayerSummaries($scope.convert32to64(id)).$promise.then(function (summary) {
             
             if (_.has(summary.response, 'players')) {
-                var player = [summary.personaname, summary.avatar];
+                var player = {personaname: summary.personaname, avatar: summary.avatar];
                 return player;
             } else {
                 return {error: 'Player could not be found'};
@@ -40,6 +41,8 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
             return err;
         });
     }
+    
+    $scope.player = getPlayerSummary(players[0].account_id).personaname;
     // $scope.matchResult = $scope.matchResult[1];
 
 }]);
