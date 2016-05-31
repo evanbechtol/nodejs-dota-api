@@ -16,6 +16,7 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
         $scope.match = _.pick(match, 'result');
         $scope.match = $scope.match.result;
         $scope.players = $scope.match.players;
+        console.log($scope.players[0]);
         $scope.player = getPlayerSummary($scope.players[0].account_id);
         console.log($scope.player);
         console.log($scope.player);
