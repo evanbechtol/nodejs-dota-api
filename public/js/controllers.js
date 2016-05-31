@@ -23,13 +23,6 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
         console.error(err);
     });
     
-    $scope.convert32to64 = function (id) {
-    	return dotaApi.convert32to64(id);   
-    };
-    $scope.convert64to32 = function(id) {
-        return dotaApi.convert64to32(id);
-    };
-    
     var getPlayerSummary  = function(id) {
         dotaApp.getPlayerSummaries($scope.convert32to64(id)).$promise.then(function (summary) {
             
@@ -44,7 +37,13 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
         });
     }
     
+    $scope.convert32to64: function (short_id) {
+        return short_id + 76561197960265728;
+    };
     
+    $scope.convert64to32: function (long_id) {
+        return long_id + 76561197960265728;
+    };
     // $scope.matchResult = $scope.matchResult[1];
 
 }]);
