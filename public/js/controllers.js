@@ -28,8 +28,10 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
     var getPlayerSummary  = function(id) {
         matchDetailsService.getPlayerSummaries($scope.convert32to64(id)).$promise.then(function (summary) {
             console.log('Summary: ' + JSON.stringify(summary));
-            if (_.has(summary.response, 'players')) {
-                var player = {personaname: summary.personaname, avatar: summary.avatar};
+            var summary = _.pick(summary, 'response');
+            
+            if (_.has(summary, 'players')) {
+                var player = {personaname: summary[0].personaname, avatar: summary[0].avatar};
                 return player;
             } else {
                 return {error: 'Player could not be found'};
