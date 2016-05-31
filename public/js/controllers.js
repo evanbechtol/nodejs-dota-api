@@ -17,7 +17,7 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
         $scope.match = $scope.match.result;
         $scope.players = $scope.match.players;
        // console.log($scope.players[0].account_id);
-        //$scope.player = getPlayerSummary($scope.players[0].account_id);
+        $scope.player;
         console.log('Call: ' + getPlayerSummary($scope.players[0].account_id));
         console.log(JSON.stringify($scope.players));
     }, function (err) {
@@ -27,14 +27,13 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
     function getPlayerSummary (id) {
         var player;
         matchDetailsService.getPlayerSummaries($scope.convert32to64(id)).$promise.then(function (response) {
-           // console.log('Summary: ' + JSON.stringify(response));
+
             var summary = _.pick(response, 'response');
             summary = _.pick(summary.response, 'players');
-           // console.log(JSON.stringify(summary));
+
             if (_.has(summary, 'players')) {
-               // console.log('We found player');
                 
-                player = {personaname: summary.players[0].personaname, avatar: summary.players[0].avatar};
+                $scope.player = {personaname: summary.players[0].personaname, avatar: summary.players[0].avatar};
                 console.log('Player: ' + JSON.stringify(player));
                 //return player;
             } else {
@@ -45,7 +44,7 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
             console.log('Error encountered');
             return err;
         });
-        console.log('here: ' + JSON.stringify(player));
+        console.log('here: ' + JSON.stringify($scope.player));
         return player;
     }
     
