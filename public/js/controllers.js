@@ -25,6 +25,7 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
     });
     
     function getPlayerSummary (id) {
+        var player;
         matchDetailsService.getPlayerSummaries($scope.convert32to64(id)).$promise.then(function (response) {
            // console.log('Summary: ' + JSON.stringify(response));
             var summary = _.pick(response, 'response');
@@ -33,7 +34,7 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
             if (_.has(summary, 'players')) {
                // console.log('We found player');
                 
-                var player = {personaname: summary.players[0].personaname, avatar: summary.players[0].avatar};
+                player = {personaname: summary.players[0].personaname, avatar: summary.players[0].avatar};
                 console.log('Player: ' + JSON.stringify(player));
                 return player;
             } else {
@@ -44,6 +45,7 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
             console.log('Error encountered');
             return err;
         });
+        return player;
     }
     
     $scope.convert32to64 = function (short_id) {
