@@ -29,8 +29,9 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
     function getPlayerSummary (id, num) {
         var player;
         matchDetailsService.getPlayerSummaries($scope.convert32to64(id)).$promise.then(function (response) {
-            console.log(JSON.stringify(summary));
+
             var summary = _.pick(response, 'response');
+            console.log(JSON.stringify(summary));
             summary = _.pick(summary.response, 'players');
             console.log('Num summaries: '  +summary.players.length);
             console.log('Personaname: ' + JSON.stringify(summary));
