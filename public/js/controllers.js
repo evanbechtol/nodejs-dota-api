@@ -35,7 +35,7 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
             summary = _.pick(summary.response, 'players');
             
             for (var i = 0; i < summary.players.length; i++) {
-                    $scope.players[i].accountid = summary.players[i].personaname;
+                    $scope.players[i].personaname = summary.players[i].personaname;
                     //console.log('Player: ' + JSON.stringify($scope.player));
                     //return player;
             }
