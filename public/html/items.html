@@ -9,7 +9,7 @@
         </form>
     	<div>
             <ul>
-                <li ng-repeat="plyr in players">{{ plyr }}</li>
+                <li ng-repeat="plyr in players">{{ plyr | json:4 }}</li>
             </ul>
     	</div>
         <div>
