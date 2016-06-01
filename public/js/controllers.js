@@ -18,7 +18,7 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
         $scope.players = $scope.match.players;
         $scope.player = [];
         for (var i = 0; i < $scope.players.length; i++) {
-            $scope.player.push($scope.getPlayerSummary($scope.players[0].account_id))
+           $scope.getPlayerSummary($scope.players[i].account_id);
         }
         console.log($scope.player);
         //console.log('Call: ' + $scope.getPlayerSummary($scope.players[0].account_id));
@@ -36,7 +36,7 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
 
             if (_.has(summary, 'players')) {
                 
-                $scope.player = {personaname: summary.players[0].personaname, avatar: summary.players[0].avatar};
+                $scope.player.push({personaname: summary.players[0].personaname, avatar: summary.players[0].avatar});
                 console.log('Player: ' + JSON.stringify(player));
                 //return player;
             } else {
