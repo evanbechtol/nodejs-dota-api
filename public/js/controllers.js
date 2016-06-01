@@ -21,7 +21,10 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
             for (var i = 0; i < $scope.players.length; i++) {
                 console.log('Player: ' + $scope.players[i].account_id);
                 var longId = $scope.convert32to64($scope.players[i].account_id);
-                $scope.players[i].personaname = getPlayerSummary(longId);
+                $scope.apply(function() {
+                    $scope.players[i].personaname = getPlayerSummary(longId);
+                });
+                
             }
 
         }, function (err) {
