@@ -33,7 +33,7 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
             var summary = _.pick(response, 'response');
             summary = _.pick(summary.response, 'players');
             console.log('Num summaries: '  +summary.players.length);
-            
+            console.log('Personaname: ' + summary.players.personaname);
             $scope.players[num].personaname = summary.players.personaname;
             
         }, function (err) {
