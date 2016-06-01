@@ -16,14 +16,18 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
         $scope.match = _.pick(match, 'result');
         $scope.match = $scope.match.result;
         $scope.players = $scope.match.players;
-        $scope.player;
-        console.log('Call: ' + getPlayerSummary($scope.players[0].account_id));
-        console.log(JSON.stringify($scope.players));
+        $scope.player = [];
+        for (var i = 0; i < $scope.players.length; i++) {
+            $scope.player.push($scope.getPlayerSummary($scope.players[0].account_id))
+        }
+        console.log($scope.player);
+        //console.log('Call: ' + $scope.getPlayerSummary($scope.players[0].account_id));
+        //console.log(JSON.stringify($scope.players));
     }, function (err) {
         console.error(err);
     });
     
-    function getPlayerSummary (id) {
+    $scope.getPlayerSummary = function (id) {
         var player;
         matchDetailsService.getPlayerSummaries($scope.convert32to64(id)).$promise.then(function (response) {
 
