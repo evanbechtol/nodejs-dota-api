@@ -12,22 +12,23 @@ dotaApp.controller('homeController', ['$scope', '$resource', '$location', 'match
 
 dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsService', 'matchService', function ($scope, $routeParams, matchDetailsService, matchService) {
     $scope.matchId = matchService.matchId;
-    matchDetailsService.getMatch($scope.matchId).$promise.then(function (match) {
-        $scope.match = _.pick(match, 'result');
-        $scope.match = $scope.match.result;
-        $scope.players = $scope.match.players;
-        console.log('Num players: ' + $scope.players.length);
-        for (var i = 0; i < $scope.players.length; i++) {
-            console.log('Player: ' + $scope.players[i].account_id);
-            getPlayerSummary($scope.players[i].account_id, i);
-        }
+    $scope.submit = function() {
+        matchDetailsService.getMatch($scope.matchId).$promise.then(function (match) {
+            $scope.match = _.pick(match, 'result');
+            $scope.match = $scope.match.result;
+            $scope.players = $scope.match.players;
+            console.log('Num players: ' + $scope.players.length);
+            for (var i = 0; i < $scope.players.length; i++) {
+                console.log('Player: ' + $scope.players[i].account_id);
+                getPlayerSummary($scope.players[i].account_id, i);
+            }
 
-    }, function (err) {
-        console.error(err);
-    });
+        }, function (err) {
+            console.error(err);
+        });
+    }
     
     function getPlayerSummary (id, num) {
-        var player;
         matchDetailsService.getPlayerSummaries($scope.convert32to64(id)).$promise.then(function (response) {
 
             var summary = _.pick(response, 'response');
