@@ -16,7 +16,6 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
         $scope.match = _.pick(match, 'result');
         $scope.match = $scope.match.result;
         $scope.players = $scope.match.players;
-       // console.log($scope.players[0].account_id);
         $scope.player;
         console.log('Call: ' + getPlayerSummary($scope.players[0].account_id));
         console.log(JSON.stringify($scope.players));
@@ -44,8 +43,6 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
             console.log('Error encountered');
             return err;
         });
-        console.log('here: ' + JSON.stringify($scope.player));
-        return player;
     }
     
     $scope.convert32to64 = function (short_id) {

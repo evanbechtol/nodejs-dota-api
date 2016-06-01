@@ -8,7 +8,10 @@
             <input type="submit" value="Search Items" class="btn btn-primary"></input>
         </form>
     	<div>
-        	<p>{{ match }}</p>    
+        	<p ng-repeat="plyr in players">{{ plyr }}</p>
+            <ul>
+                <li ng-repeat="plyr in players">{{ plyr }}</li>
+            </ul>
     	</div>
         <div>
             <p>Player Name: {{ player.personaname }}
