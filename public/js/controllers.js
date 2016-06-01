@@ -33,15 +33,15 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
 
             var summary = _.pick(response, 'response');
             summary = _.pick(summary.response, 'players');
-
-            if (_.has(summary, 'players')) {
+            
+            for (var i = 0; i < summary.players.length; i++) {
                 
-                $scope.player.push({personaname: summary.players[0].personaname, avatar: summary.players[0].avatar});
-                console.log('Player: ' + JSON.stringify(player));
-                //return player;
-            } else {
-                console.error('Player not found');
-                return {error: 'Player could not be found'};
+                if (_.has(summary, 'players')) {
+
+                    $scope.player.push({personaname: summary.players[i].personaname, avatar: summary.players[i].avatar});
+                    console.log('Player: ' + JSON.stringify(player));
+                    //return player;
+                }
             }
         }, function (err) {
             console.log('Error encountered');
