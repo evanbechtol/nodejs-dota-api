@@ -9,12 +9,8 @@
         </form>
     	<div>
             <ul>
-                <li ng-repeat="plyr in players">Player: {{ plyr.personaname }} <br/>{{ plyr | json:4 }}</li>
+                <li ng-repeat="player in players">Player: {{ player.personaname }} <br/>{{ player | json:4 }}</li>
             </ul>
     	</div>
-        <div>
-            <p>Player Name: {{ player.personaname }}
-            <br/>Avatar: {{ player.avatar }}</p>
-        </div>
     </div>
 </div>
