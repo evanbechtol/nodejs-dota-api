@@ -37,7 +37,7 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
             summary = _.pick(summary.response, 'players');
             //console.log('Num summaries: '  +summary.players.length);
             //console.log('Personaname: ' + JSON.stringify(summary));
-            return summary.players.personaname;
+            return summary.players[0].personaname;
             
         }, function (err) {
             console.log('Error encountered');
@@ -50,7 +50,7 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
     };
     
     $scope.convert64to32 = function (long_id) {
-        return long_id + 76561197960265728;
+        return long_id - 76561197960265728;
     };
     // $scope.matchResult = $scope.matchResult[1];
 
