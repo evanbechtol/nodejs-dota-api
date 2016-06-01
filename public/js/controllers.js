@@ -39,7 +39,7 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
                 if (_.has(summary, 'players')) {
 
                     $scope.player.push({personaname: summary.players[i].personaname, avatar: summary.players[i].avatar});
-                    console.log('Player: ' + JSON.stringify(player));
+                    console.log('Player: ' + JSON.stringify($scope.player));
                     //return player;
                 }
             }
