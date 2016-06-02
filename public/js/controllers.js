@@ -21,10 +21,8 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
             for (var i = 0; i < $scope.players.length; i++) {
                 console.log('Player: ' + $scope.players[i].account_id);
                 var longId = $scope.convert32to64($scope.players[i].account_id);
-                $scope.$apply(function() {
-                    $scope.players[i].personaname = getPlayerSummary(longId);
-                });
-                
+                $scope.$apply()
+                $scope.players[i].personaname = getPlayerSummary(longId, i);
             }
 
         }, function (err) {
@@ -32,14 +30,14 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
         });
     }
     
-    function getPlayerSummary (id) {
+    function getPlayerSummary (id, i) {
         matchDetailsService.getPlayerSummaries(id).$promise.then(function (response) {
 
             var summary = _.pick(response.response, 'players');
            // summary = _.pick(summary, 'players');
             //console.log('Num summaries: '  +summary.players.length);
             console.log('Personaname: ' + JSON.stringify(summary.players[0].personaname));
-            return summary.players.personaname;
+            $scope.players[i].personaname = summary.players.personaname;
             
         }, function (err) {
             console.log('Error encountered');
