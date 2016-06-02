@@ -14,8 +14,8 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
     $scope.matchId = matchService.matchId;
     $scope.submit = function() {
         matchDetailsService.getMatch($scope.matchId).$promise.then(function (match) {
-            $scope.match = _.pick(match.result, 'result');
-            //$scope.match = $scope.match.result;
+            $scope.match = _.pick(match, 'result');
+            $scope.match = $scope.match.result;
             $scope.players = $scope.match.players;
             //console.log('Num players: ' + $scope.players.length);
             for (var i = 0; i < $scope.players.length; i++) {
