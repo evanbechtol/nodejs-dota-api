@@ -9,7 +9,14 @@
         </form>
     	<div>
             <ul ng-cloak>
-                <li ng-repeat="player in players">Player: {{ player.personaname }} <br/>{{ player | json:4 }}</li>
+                <li ng-repeat="player in players"> 
+                    <div ng-if="player.personaname">
+                        Player: {{ player.personaname }}
+                    </div> <br/>
+                    <div ng-if="player">
+                        {{ player | json:4 }}
+                    </div>
+                </li>
             </ul>
     	</div>
     </div>

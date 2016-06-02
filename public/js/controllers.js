@@ -34,9 +34,9 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
 
             var summary = _.pick(response.response, 'players');
             if (_.has(summary.players[0], 'personaname')) {
-                console.info('FOUND');
-            }
-            $scope.players[i].personaname = summary.players[0].personaname;
+                $scope.players[i].personaname = summary.players[0].personaname;
+            } 
+            
             
         }, function (err) {
             console.log('Error encountered');
