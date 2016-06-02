@@ -20,7 +20,7 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
             //console.log('Num players: ' + $scope.players.length);
             for (var i = 0; i < $scope.players.length; i++) {
                 //console.log('Player: ' + $scope.players[i].account_id);
-                var longId = $scope.convert32to64($scope.players[i].account_id);
+                var longId = convert32to64($scope.players[i].account_id);
                 getPlayerSummary(longId, i);
             }
 
@@ -46,11 +46,11 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
         });
     }
     
-    $scope.convert32to64 = function (short_id) {
+    function convert32to64 (short_id) {
         return short_id + 76561197960265728;
     };
     
-    $scope.convert64to32 = function (long_id) {
+    function convert64to32 (long_id) {
         return long_id - 76561197960265728;
     };
     // $scope.matchResult = $scope.matchResult[1];
