@@ -11,6 +11,7 @@ dotaApp.controller('homeController', ['$scope', '$resource', '$location', 'match
 }]);
 
 dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsService', 'matchService', function ($scope, $routeParams, matchDetailsService, matchService) {
+    $scope.length = 10; 
     $scope.matchId = matchService.matchId;
     $scope.submit = function() {
         matchDetailsService.getMatch($scope.matchId).$promise.then(function (match) {

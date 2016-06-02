@@ -1,5 +1,5 @@
 dotaApp.service('matchService', function() {
-   this.matchId = '2377110923';
+   this.matchId = '';
 });
 
 dotaApp.service('matchDetailsService', ['$resource', function($resource) {
