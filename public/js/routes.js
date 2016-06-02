@@ -13,7 +13,7 @@ dotaApp.config(['$routeProvider', function($routeProvider) {
         controller: 'matchController'
     })
     .when('/match/:id', {
-        templateUrl: 'html/items.html',
+        templateUrl: 'html/match.html',
         controller: 'forecastController as forecast1vm'
     })
     .otherwise({redirectTo: '/'})
