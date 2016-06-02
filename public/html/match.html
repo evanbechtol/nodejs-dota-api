@@ -3,11 +3,10 @@
         <h4>Get Items</h4>
         <form ng-submit="submit()">
             <div class="form-group">
-                
                 <input type="text" ng-model="matchId" class="form-control" placeholder="Enter Match ID..."></input>
             </div>
-            <div class="alert" ng-class="{ 'alert-danger':matchId.length < length" } ng-show="matchId.length < length">
-                <p ng-show="matchId.length < length">Your Match ID is too short</p>
+            <div class="alert" ng-class="{ 'alert-danger': matchId.length < length }" ng-show="matchId.length < length">
+                <p>Your Match ID is too short</p>
             </div>
             <input type="submit" value="Retrieve Match" class="btn btn-primary"></input>
         </form>
