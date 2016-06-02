@@ -1,12 +1,47 @@
-<div class="matchDetails" style="padding-top: 5em">
-    <h2 class="lead">Details for match {{ matchId }}</h2>
-    <small><a href="#/">Back to Search</a></small>
-    <hr />
-    <div ng-repeat="w in weatherResult.list">
-        <div class="row">
-            <div class="container-fluid" style="margin-right: 1.5%">
-                <match-panel convert-to-date="convertToDate(dt)" convert-to-fahrenheit="convertToFahrenheit(dayTemp)" date-format="MMM dd, y" w="w"></match-panel>
+<div class="home">
+    <div class="" style="padding-top: 5em">
+        <h4>Match Details</h4>
+        <form ng-submit="submit()">
+            <div class="form-group">
+                <input type="text" ng-model="matchId" class="form-control"></input>
             </div>
-        </div>
+            <input type="submit" value="Search Items" class="btn btn-primary"></input>
+        </form>
+    	<div>
+            <table class="table table-condensed table-hover" ng-cloak>
+                <caption ng-if="">Summary of Match {{ matchId }}</caption>
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Hero</th>
+                        <th>Level</th>
+                        <th>Kills</th>
+                        <th>Deaths</th>
+                        <th>Assists</th>
+                        <th>Gold</th>
+                        <th>GPM</th>
+                        <th>XPM</th>
+                        <th>Hero Damage</th>
+                        <th>Tower Damage</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr ng-repeat="player in players">
+                        <td>{{ player.personaname }}</td>
+                        <td>{{ player.hero_id }}</td>
+                        <td>{{ player.level }}</td>
+                        <td>{{ player.kills }}</td>
+                        <td>{{ player.deaths }}</td>
+                        <td>{{ player.assists }}</td>
+                        <td>{{ player.gold }}</td>
+                        <td>{{ player.gold_per_min }}</td>
+                        <td>{{ player.xp_per_min }}</td>
+                        <td>{{ player.hero_damage }}</td>
+                        <td>{{ player.tower_damage }}</td>
+                    </tr>
+                </tbody>
+            </table>
+    	</div>
     </div>
 </div>

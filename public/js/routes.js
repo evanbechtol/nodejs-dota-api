@@ -5,12 +5,12 @@ dotaApp.config(['$routeProvider', function($routeProvider) {
         controller: 'matchController'
     })
     .when('/items', {
-        templateUrl: 'html/items.html',
+        templateUrl: 'html/match.html',
         controller: 'matchController'
     })
     .when('/match/', {
         templateUrl: 'html/matchDetails.html',
-        controller: 'forecastController as forecast1vm'
+        controller: 'matchController'
     })
     .when('/match/:id', {
         templateUrl: 'html/items.html',
