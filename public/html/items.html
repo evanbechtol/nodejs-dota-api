@@ -8,7 +8,7 @@
             <input type="submit" value="Search Items" class="btn btn-primary"></input>
         </form>
     	<div>
-            <ul>
+            <ul ng-cloak>
                 <li ng-repeat="player in players">Player: {{ player.personaname }} <br/>{{ player | json:4 }}</li>
             </ul>
     	</div>
