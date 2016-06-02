@@ -33,9 +33,9 @@ dotaApp.controller('matchController', ['$scope', '$routeParams', 'matchDetailsSe
         matchDetailsService.getPlayerSummaries(id).$promise.then(function (response) {
 
             var summary = _.pick(response.response, 'players');
-           // summary = _.pick(summary, 'players');
-            //console.log('Num summaries: '  +summary.players.length);
-            console.log('Personaname: ' + JSON.stringify(summary.players[0].personaname));
+            if (_.has(summary, 'personaname')) {
+                console.info('FOUND');
+            }
             $scope.players[i].personaname = summary.players[0].personaname;
             
         }, function (err) {
