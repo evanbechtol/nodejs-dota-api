@@ -13,6 +13,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (req, res) {
     res.sendFile('index.html', {root: __dirname});
+    console.log(req.connection.remoteAddress);
 });
 
 app.get('/match', function (req, res) {
